@@ -1,0 +1,6 @@
+project_id          = "your-gcp-project-id"
+db_name             = "gapguard"
+db_user             = "gapguard_app"
+db_password         = "replace-with-a-secret"
+machine_tier        = "db-custom-1-3840"
+deletion_protection = true

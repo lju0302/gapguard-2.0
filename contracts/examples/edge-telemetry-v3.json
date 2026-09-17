@@ -1,0 +1,21 @@
+{
+  "siteId": "field-001",
+  "sectionId": "site-001-wall-001",
+  "deviceId": "generator-001",
+  "sourceType": "simulator",
+  "measuredAt": "2026-09-15T00:00:00Z",
+  "seqNo": 1842,
+  "dataHash": "c1ccef126849157ae7b1735fda0726a66fbf6ca59b8bb24952ded24afb9d2a28",
+  "eventId": "run-001:site-001-wall-001:1842",
+  "streamId": "site-001-wall-001",
+  "schemaVersion": 3,
+  "producedAt": "2026-09-15T00:00:00.010Z",
+  "testRunId": "run-001",
+  "sensors": {
+    "top": { "i2cAddress": "0x69", "tiltX": 0.12, "tiltY": -0.04, "vibrationRms": 0.18, "peakAcceleration": 0.42 },
+    "bottom": { "i2cAddress": "0x68", "tiltX": 0.08, "tiltY": -0.02, "vibrationRms": 0.16, "peakAcceleration": 0.37 }
+  },
+  "relativeTiltX": 0.04,
+  "relativeTiltY": -0.02,
+  "status": "NORMAL"
+}

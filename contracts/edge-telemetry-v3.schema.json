@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/team-between/gapguard/contracts/edge-telemetry-v3.schema.json",
+  "title": "GAPGUARD Edge Telemetry V3",
+  "description": "1Hz processed telemetry generated from 100Hz raw samples.",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "siteId": { "type": "string", "minLength": 1 },
+        "sectionId": { "type": "string", "minLength": 1 },
+        "deviceId": { "type": "string", "minLength": 1 },
+        "sourceType": { "type": "string", "enum": ["physical", "simulator"] },
+        "measuredAt": { "type": "string", "format": "date-time" },
+        "seqNo": { "type": "integer", "minimum": 0 },
+        "dataHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "eventId": { "type": "string", "pattern": "^[^:]+:[^:]+:[0-9]+$" },
+        "streamId": { "type": "string", "minLength": 1 },
+        "schemaVersion": { "type": "integer", "const": 3 },
+        "producedAt": { "type": "string", "format": "date-time" },
+        "testRunId": { "type": "string", "minLength": 1 },
+        "sensors": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "top": { "$ref": "#/$defs/topSensorSummary" },
+            "bottom": { "$ref": "#/$defs/bottomSensorSummary" }
+          },
+          "required": ["top", "bottom"]
+        },
+        "relativeTiltX": { "type": "number", "description": "Top tiltX minus bottom tiltX, in degrees." },
+        "relativeTiltY": { "type": "number", "description": "Top tiltY minus bottom tiltY, in degrees." },
+        "status": { "type": "string", "enum": ["NORMAL", "WARNING", "DANGER"] }
+      },
+      "required": [
+        "siteId", "sectionId", "deviceId", "sourceType", "measuredAt", "seqNo",
+        "dataHash", "eventId", "streamId", "schemaVersion", "producedAt", "testRunId",
+        "sensors", "relativeTiltX", "relativeTiltY", "status"
+      ],
+      "unevaluatedProperties": false
+    }
+  ],
+  "$defs": {
+    "topSensorSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "i2cAddress": { "type": "string", "const": "0x69" },
+        "tiltX": { "type": "number", "description": "1 second window average roll delta in degrees." },
+        "tiltY": { "type": "number", "description": "1 second window average pitch delta in degrees." },
+        "vibrationRms": { "type": "number", "minimum": 0, "description": "1 second dynamic acceleration RMS in m/s^2." },
+        "peakAcceleration": { "type": "number", "minimum": 0, "description": "1 second dynamic acceleration peak in m/s^2." }
+      },
+      "required": ["i2cAddress", "tiltX", "tiltY", "vibrationRms", "peakAcceleration"]
+    },
+    "bottomSensorSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "i2cAddress": { "type": "string", "const": "0x68" },
+        "tiltX": { "type": "number", "description": "1 second window average roll delta in degrees." },
+        "tiltY": { "type": "number", "description": "1 second window average pitch delta in degrees." },
+        "vibrationRms": { "type": "number", "minimum": 0, "description": "1 second dynamic acceleration RMS in m/s^2." },
+        "peakAcceleration": { "type": "number", "minimum": 0, "description": "1 second dynamic acceleration peak in m/s^2." }
+      },
+      "required": ["i2cAddress", "tiltX", "tiltY", "vibrationRms", "peakAcceleration"]
+    }
+  }
+}
