@@ -1,0 +1,18 @@
+{
+  "siteId": "field-001",
+  "sectionId": "site-001-wall-001",
+  "deviceId": "generator-001",
+  "sourceType": "simulator",
+  "measuredAt": "2026-09-15T00:00:01Z",
+  "seqNo": 1843,
+  "dataHash": "84220330d0f492db77f293e8b608e7c3308492efb92120f9dd1b59e8ef6c21d9",
+  "eventId": "run-001:site-001-wall-001:1843",
+  "streamId": "site-001-wall-001",
+  "schemaVersion": 3,
+  "producedAt": "2026-09-15T00:00:01.005Z",
+  "testRunId": "run-001",
+  "eventType": "THRESHOLD_EXCEEDED",
+  "severity": "WARNING",
+  "reason": "relative tilt threshold exceeded",
+  "details": { "relatedSeqNo": 1842, "ruleCode": "EDGE_STRUCTURAL_V2" }
+}

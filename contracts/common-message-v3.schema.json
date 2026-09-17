@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/team-between/gapguard/contracts/common-message-v3.schema.json",
+  "title": "GAPGUARD Common Message Metadata V3",
+  "type": "object",
+  "properties": {
+    "siteId": { "type": "string", "minLength": 1 },
+    "sectionId": { "type": "string", "minLength": 1 },
+    "deviceId": { "type": "string", "minLength": 1 },
+    "sourceType": { "type": "string", "enum": ["physical", "simulator"] },
+    "measuredAt": { "type": "string", "format": "date-time" },
+    "seqNo": { "type": "integer", "minimum": 0 },
+    "dataHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "eventId": {
+      "type": "string",
+      "pattern": "^[^:]+:[^:]+:[0-9]+$"
+    },
+    "streamId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "integer", "const": 3 },
+    "producedAt": { "type": "string", "format": "date-time" },
+    "testRunId": { "type": "string", "minLength": 1 }
+  },
+  "required": [
+    "siteId",
+    "sectionId",
+    "deviceId",
+    "sourceType",
+    "measuredAt",
+    "seqNo",
+    "dataHash",
+    "eventId",
+    "streamId",
+    "schemaVersion",
+    "producedAt",
+    "testRunId"
+  ]
+}
